@@ -649,7 +649,7 @@ function formatResponse(res: Response, body: string | null): string {
   return `[response] HTTP ${res.status}\n${headerLines}\n\n${body ?? "(no body)"}`;
 }
 
-const REDACTED_HEADERS = new Set(["x-apikey"]);
+const REDACTED_HEADERS = new Set(["x-apikey", "x-signature"]);
 
 function formatCurl(method: string, url: string, headers: Record<string, string>, body: string | null): string {
   const headerArgs = Object.entries(headers)

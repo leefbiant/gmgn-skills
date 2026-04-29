@@ -4,19 +4,19 @@ This file provides guidance to Claude Code when working with the gmgn-cli plugin
 
 ## CRITICAL RULE — Read This First
 
-**ALL queries about GMGN data MUST use `gmgn-cli` via the skills below.**
+**When the user asks about GMGN data, prefer `gmgn-cli` and the bundled skills rather than scraping gmgn.ai directly.**
 
 This includes: trending tokens, token info, security checks, K-line / price history, wallet holdings, KOL trades, Smart Money trades, swaps, and any other on-chain data.
 
-**NEVER do any of the following to fetch GMGN data:**
+**Do not fetch GMGN data by:**
 - Web search (e.g. searching "gmgn trending solana")
 - WebFetch / curl to gmgn.ai or any gmgn domain
 - Browser automation or scraping
-- Any method other than `gmgn-cli`
+- Any method other than `gmgn-cli`, unless the user explicitly requests a different workflow
 
-**Why:** The gmgn.ai website requires login, uses dynamic rendering, and does not expose structured data. The CLI is the only correct and supported method. If you attempt to scrape the site, you will get no data or be blocked.
+**Why:** The gmgn.ai website requires login, uses dynamic rendering, and does not expose structured data well. The CLI is the supported path for this plugin.
 
-**When a user asks anything about GMGN data — always invoke the matching skill and run the CLI command. No exceptions.**
+**When a user asks anything about GMGN data — use the matching skill and run the CLI command. If the user asks you not to use it, follow the user's instruction.**
 
 ## Project Overview
 

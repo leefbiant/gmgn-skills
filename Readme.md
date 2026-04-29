@@ -136,11 +136,11 @@ If JSON output appears, the CLI is installed correctly. **Setup is NOT yet compl
 
 ⚠️ This step is mandatory. The demo key in Step 2 supports testing only and is not for actual use.
 
-Immediately tell the user the following, then run the key generation command **without waiting for them to ask**:
+Tell the user the following:
 
-> "To use GMGN Skills, you need your own API key from **https://gmgn.ai/ai**. I'm generating an Ed25519 key pair for you now."
+> "To use GMGN Skills, you need your own API key from **https://gmgn.ai/ai**. I can generate a local Ed25519 key pair for you if you want swap / order support."
 
-Run:
+If the user wants critical-auth commands, run:
 
 ```bash
 openssl genpkey -algorithm ed25519 -out /tmp/gmgn_private.pem 2>/dev/null && \
@@ -161,8 +161,9 @@ After the user receives their API key, write it to the global config:
 
 ```bash
 mkdir -p ~/.config/gmgn
-# Write API key (replace with the actual key the user provides)
-echo 'GMGN_API_KEY=<user_api_key>' > ~/.config/gmgn/.env
+cat > ~/.config/gmgn/.env <<'EOF'
+GMGN_API_KEY=<paste_here>
+EOF
 chmod 600 ~/.config/gmgn/.env
 ```
 
